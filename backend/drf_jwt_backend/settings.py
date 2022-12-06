@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication.apps.AuthenticationConfig',
     'corsheaders',
-    'cars.apps.CarsConfig'  # This app is for example use only
+    'cars.apps.CarsConfig',  # This app is for example use only
+    'Artists'
 ]
 
 MIDDLEWARE = [
@@ -154,4 +155,4 @@ SIMPLE_JWT = {
 try:
     from drf_jwt_backend.local_settings import *
 except ImportError:
-    pass
+    raise ImportError("local settings not found")
