@@ -4,6 +4,6 @@ from django.db import models
 
 
 class Artist(models.Model):
-    artist_api_id = models.IntegerField()
+    artist_api_id = models.CharField(max_length=255)
     artist_name = models.CharField(max_length=255)
-    upvotes = models.IntegerField(default=0)
+    upvotes = models.IntegerField(default=None, null=True)
