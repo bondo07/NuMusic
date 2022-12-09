@@ -13,8 +13,18 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
+import TopArtistsPage from "./pages/TopArtistsPage/TopArtistsPage";
+import { useState } from "react";
 
 function App() {
+
+  const [results, setResults] = useState([])
+  const [artistInfo, setArtistInfo] = useState({})
+
+
+
+
   return (
     <div>
       <Navbar />
@@ -23,7 +33,25 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage results={results}
+              setResults={setResults}
+              setArtistInfo={setArtistInfo}/>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/top10artists"
+          element={
+            <PrivateRoute>
+              <TopArtistsPage />
             </PrivateRoute>
           }
         />

@@ -1,0 +1,21 @@
+.text-bar {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 40em;
+    height: 50px;
+    font-size: 1rem;
+    padding-left: 10px;
+
+}
+
+.search-button {
+    width: 80px;
+    height: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.search-bar {
+    margin: 35px;
+    margin-left: 60px;
+}

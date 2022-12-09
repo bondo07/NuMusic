@@ -14,12 +14,16 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <ul>
-        <Stack>
-          <li>
+        <Stack className="nav-buttons">
+          <span>
             <Button variant='Contained' onClick={() => navigate("/")}>Home</Button>
+          </span>
+          <span>
             <Button variant='Contained' onClick={() => navigate("/favorites")}>Favorites</Button>
-            <Button variant='Contained'>Top 10 Weekly Artists!</Button>
-          </li>
+          </span>
+          <span>
+            <Button variant='Contained' onClick={() => navigate("/top10artists")}>Top Artists This Week</Button>
+          </span>
           <li>
             {user ? (
               <Button variant='contained' onClick={logoutUser}>Logout</Button>

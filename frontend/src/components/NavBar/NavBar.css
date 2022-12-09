@@ -25,11 +25,10 @@ li {
 
 .navBar button:hover {
   background: white;
-  color: steelblue;
+  color: rgb(70, 180, 114);
   cursor: pointer;
 }
 
-.brand {
-  cursor: pointer;
-  font-size: 2rem;
+.nav-buttons {
+  display: contents;
 }
