@@ -1,6 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate, Link } from "react-router-dom";
+import './HomePage.css'
+
 
 import axios from "axios";
 
@@ -29,12 +32,11 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))}
+      <div className="brand">
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <b>React/Django JWT</b>
+          </Link>
+        </div>
     </div>
   );
 };
