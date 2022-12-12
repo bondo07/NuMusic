@@ -15,13 +15,12 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import TopArtistsPage from "./pages/TopArtistsPage/TopArtistsPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 
   const [results, setResults] = useState([])
   const [artistInfo, setArtistInfo] = useState({})
-
 
 
 
@@ -32,11 +31,11 @@ function App() {
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            // <PrivateRoute>
               <HomePage results={results}
               setResults={setResults}
               setArtistInfo={setArtistInfo}/>
-            </PrivateRoute>
+            // </PrivateRoute>
           }
         />
         <Route
