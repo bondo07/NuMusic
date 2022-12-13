@@ -10,11 +10,9 @@ const ResultsTable = ({result, setArtistInfo}) => {
 
     function handleSelection(e) {
         e.preventDefault();
-        navigate("../artistresults", {replace: true});
+        navigate("../searchresults", {replace: true});
         setArtistInfo(result);
-        
     }
-    // console.log(result.artistImg);
     return ( 
         <div className="artist-card" onClick={handleSelection}>
             <CardGroup>

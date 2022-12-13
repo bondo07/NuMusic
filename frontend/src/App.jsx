@@ -20,11 +20,36 @@ import { useEffect, useState } from "react";
 
 function App() {
 
-  const [results, setResults] = useState([])
+  const [artistResults, setArtistResults] = useState([])
+  const [trackResults, setTrackResults] = useState([])
   const [artistInfo, setArtistInfo] = useState({})
 
+  const [authToken, setAuthToken] = useState("")
+
+  
+  const clientId = '0fd5af8b613d4d009f7a6f0f3238a61e'; //Client ID
+  const authEndpoint = 'https://accounts.spotify.com/authorize'; // API Authentication
+  const redirectURI = 'http://localhost:3000'; // Redirect URL
+  const responseType = 'token'
+  
+  const authURL = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectURI}&response_type=${responseType}`;
+
+  useEffect(() => {
+    const localHash = window.location.hash
+    // let token = window.localStorage.getItem('token')  //This retrieves the auth token from local storage
+
+    if(localHash.includes("=")) {
+      let apiKey = localHash.substring(1).split("&").find(e => e.startsWith("access_token")).split("=")[1] // This separates the url with token info and pulls the necessary info
+      window.location.hash = ""
+      window.localStorage.setItem("spotifyKey", apiKey)
+      setAuthToken(apiKey)
+    }
+  }, [])
 
 
+
+
+  // console.log(trackResults)
   return (
     <div>
       <Navbar />
@@ -33,9 +58,13 @@ function App() {
           path="/"
           element={
             // <PrivateRoute>
-              <HomePage results={results}
-              setResults={setResults}
-              setArtistInfo={setArtistInfo}/>
+              <HomePage artistResults={artistResults}
+              setArtistResults={setArtistResults}
+              setArtistInfo={setArtistInfo}
+              setTrackResults={setTrackResults}
+              authToken={authToken}
+              setAuthToken={setAuthToken}
+              authURL={authURL}/>
             // </PrivateRoute>
           }
         />
@@ -48,10 +77,12 @@ function App() {
           }
         />
         <Route
-          path="/artistresults"
+          path="/searchresults"
           element={
             <PrivateRoute>
-              <SearchResultsPage />
+              <SearchResultsPage artistInfo={artistInfo}
+              setArtistInfo={setArtistInfo}
+              authToken={authToken}/>
             </PrivateRoute>
           }
         />

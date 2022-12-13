@@ -16,31 +16,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const HomePage = ({results, setResults, setArtistInfo}) => {
+const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResults, authToken, setAuthToken, authURL}) => {
   const [user, token] = useAuth();
   const [searchWord, setSearchWord] = useState("") //This will be the default state of the searchresults IF YOU HAVE THEM ON THE LANDING PAGE
-  const [authToken, setAuthToken] = useState("")
 
-  
-  const clientId = '0fd5af8b613d4d009f7a6f0f3238a61e'; //Client ID
-  const authEndpoint = 'https://accounts.spotify.com/authorize'; // API Authentication
-  const redirectURI = 'http://localhost:3000'; // Redirect URL
-  const responseType = 'token'
-  
-  const authURL = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectURI}&response_type=${responseType}`;
-
-  useEffect(() => {
-    const localHash = window.location.hash
-    // let token = window.localStorage.getItem('token')  //This retrieves the auth token from local storage
-
-    if(localHash.includes("=")) {
-      let apiKey = localHash.substring(1).split("&").find(e => e.startsWith("access_token")).split("=")[1] // This separates the url with token info and pulls the necessary info
-      window.location.hash = ""
-      window.localStorage.setItem("spotifyKey", apiKey)
-      setAuthToken(apiKey)
-      // console.log(apiKey)
-    }
-  }, [])
 
   let navigate = useNavigate()
   const handleLogout = () => {
@@ -48,7 +27,7 @@ const HomePage = ({results, setResults, setArtistInfo}) => {
     window.localStorage.removeItem("spotifyKey")
     navigate("/", { replace: true });
   }
-
+  
   async function fetchSearchResults() {
     let response = await axios.get(`https://api.spotify.com/v1/search`, {
       headers: {
@@ -56,22 +35,33 @@ const HomePage = ({results, setResults, setArtistInfo}) => {
       },
       params: {
         q: searchWord,
-        type: "artist"
+        type: "artist,track"
       }
     })
-    setResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
+    console.log(response)
+    // setResults(response.data.tracks.items)
+    setArtistResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
         return {
           id: artists.id,
           name: artists.name,
           artistImg: artists.images[0].url,
+          genre: artists.genres[0]
       }
     }))
+    setTrackResults(response.data.tracks.items) //.map(track => {
+    //     return {
+    //       id: artists.id,
+    //       name: artists.name,
+    //       artistImg: artists.images[0].url,
+    //   }
+    // }))
   }
   useEffect(() => {
+    if(!searchWord) return
     fetchSearchResults();
   }, [searchWord]);
   
-  console.log(results)
+  // console.log(artistResults)
   return (
     <div>
         <b>
@@ -85,7 +75,7 @@ const HomePage = ({results, setResults, setArtistInfo}) => {
           </span>
           <SearchBar setSearchWord={setSearchWord}/>
           <span className="card-spacing">
-            {results.map((result, i) => {
+            {artistResults.map((result, i) => {
               return (
                 <ResultsTable result={result}
                 key={i}

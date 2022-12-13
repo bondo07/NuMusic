@@ -10,6 +10,7 @@ const SearchBar = ({setSearchWord}) => {
     function handleSubmit(e) {
         e.preventDefault();
         setSearchWord(searchCriteria);
+        setSearchCriteria("")
     }
 
     return (  
@@ -17,7 +18,7 @@ const SearchBar = ({setSearchWord}) => {
         <input
           className="text-bar"
           type="text"
-          placeholder="Search Artists..."
+          placeholder="Search Artists/Songs..."
           value={searchCriteria}
           onChange={handleChange}
         />
