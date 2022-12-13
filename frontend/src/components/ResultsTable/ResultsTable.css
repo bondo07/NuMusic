@@ -1,0 +1,8 @@
+.artist-card {
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.artist-card:hover {
+    cursor: pointer;
+}

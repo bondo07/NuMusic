@@ -7,6 +7,10 @@ import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import nuLogo from '../../Assets/numusic.png';
+import ResultsTable from '../../components/ResultsTable/ResultsTable';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -27,21 +31,21 @@ const HomePage = ({results, setResults, setArtistInfo}) => {
 
   useEffect(() => {
     const localHash = window.location.hash
-    let token = window.localStorage.getItem('token')  //This retrieves the auth token from local storage
+    // let token = window.localStorage.getItem('token')  //This retrieves the auth token from local storage
 
     if(localHash.includes("=")) {
       let apiKey = localHash.substring(1).split("&").find(e => e.startsWith("access_token")).split("=")[1] // This separates the url with token info and pulls the necessary info
       window.location.hash = ""
       window.localStorage.setItem("spotifyKey", apiKey)
+      setAuthToken(apiKey)
+      // console.log(apiKey)
     }
-    setAuthToken(token)
-    console.log(token)
   }, [])
 
   let navigate = useNavigate()
   const handleLogout = () => {
     setAuthToken("")
-    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("spotifyKey")
     navigate("/", { replace: true });
   }
 
@@ -55,29 +59,42 @@ const HomePage = ({results, setResults, setArtistInfo}) => {
         type: "artist"
       }
     })
-    setResults(response.data)
-    console.log(response.data.artists.items[0])
+    setResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
+        return {
+          id: artists.id,
+          name: artists.name,
+          artistImg: artists.images[0].url,
+      }
+    }))
   }
   useEffect(() => {
     fetchSearchResults();
   }, [searchWord]);
-
+  
+  console.log(results)
   return (
     <div>
-      <div className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <h1>nuMusic</h1>
-          </Link>
-          
-              <a href={authURL}>Login to Spotify</a> 
-            <Stack>
-              <span>
-                <Button variant="Contained" onClick={handleLogout}>Logout</Button>
-              </span>
-                <SearchBar setSearchWord={setSearchWord}/>
-            </Stack> 
-        
-        </div>
+        <b>
+          <img src={nuLogo} alt="nuMusic" className="logo"/>
+        </b>
+      {! localStorage.getItem("spotifyKey") ?
+          <a href={authURL} className="btn btn-success btn-lg">Login to Spotify</a> :
+        <Stack>
+          <span>
+            <Button variant="Contained" onClick={handleLogout}>Logout</Button>
+          </span>
+          <SearchBar setSearchWord={setSearchWord}/>
+          <span className="card-spacing">
+            {results.map((result, i) => {
+              return (
+                <ResultsTable result={result}
+                key={i}
+                setArtistInfo={setArtistInfo}/>
+              );
+            })}
+          </span>
+        </Stack> 
+      }
     </div>
   );
 };

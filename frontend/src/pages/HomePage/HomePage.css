@@ -1,3 +1,30 @@
 .brand {
     color: black;
 }
+
+.logo {
+    width: 30%;
+    height: auto;
+    padding: 50px;
+}
+
+button {
+    background-color: aquamarine;
+}
+
+.api {
+    border: solid 2px black;
+    border-radius: 7px;
+    background-color: #387f42;
+    display: flex;
+    justify-content: center;
+}
+
+.card-spacing {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+  }
+  
