@@ -13,9 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-
-
-
 const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResults, authToken, setAuthToken, authURL}) => {
   const [user, token] = useAuth();
   const [searchWord, setSearchWord] = useState("") //This will be the default state of the searchresults IF YOU HAVE THEM ON THE LANDING PAGE
@@ -38,8 +35,7 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
         type: "artist,track"
       }
     })
-    console.log(response)
-    // setResults(response.data.tracks.items)
+    // console.log(response)
     setArtistResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
         return {
           id: artists.id,
