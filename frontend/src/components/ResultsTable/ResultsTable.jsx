@@ -7,9 +7,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Stack } from '@mui/material';
+import axios from "axios";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 
-const ResultsTable = ({result, setArtistInfo}) => {
+const ResultsTable = ({result, setArtistInfo, token, user}) => {
     let navigate = useNavigate();
 
     function handleSelection(e) {
@@ -17,6 +19,31 @@ const ResultsTable = ({result, setArtistInfo}) => {
         navigate("../searchresults", {replace: true});
         setArtistInfo(result);
     }
+
+    async function addFavorite() {
+        const newFavorite = {
+            artist_id: result.id,
+            user_id: user.id,
+        };
+        try {
+            await axios.post(`http://127.0.0.1:8000/api/favorites/`, 
+            newFavorite,
+            {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            }
+        );
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    // console.log(result)
+    const handleAddFavorite = (e) => {
+        e.preventDefault();
+        addFavorite();
+    }
+
     return ( 
         <div className="artist-card">
             <Card sx={{width: 420, height: 390}} onClick={handleSelection}>
@@ -33,7 +60,7 @@ const ResultsTable = ({result, setArtistInfo}) => {
                             {result.genre}
                         </Typography>
                     </Stack>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={handleAddFavorite}>
                         Add To Favorites
                     </Button>
                 </CardContent>

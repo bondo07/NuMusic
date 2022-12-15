@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import { useNavigate, Link  } from "react-router-dom";
 import './HomePage.css'
 import axios from "axios";
@@ -13,8 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResults, authToken, setAuthToken, authURL}) => {
-  const [user, token] = useAuth();
+const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResults, authToken, setAuthToken, authURL, token, user}) => {
   const [searchWord, setSearchWord] = useState("") //This will be the default state of the searchresults IF YOU HAVE THEM ON THE LANDING PAGE
 
 
@@ -35,7 +33,7 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
         type: "artist,track"
       }
     })
-    // console.log(response)
+    console.log(response)
     setArtistResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
         return {
           id: artists.id,
@@ -75,7 +73,9 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
               return (
                 <ResultsTable result={result}
                 key={i}
-                setArtistInfo={setArtistInfo}/>
+                setArtistInfo={setArtistInfo}
+                token={token}
+                user={user}/>
               );
             })}
           </span>

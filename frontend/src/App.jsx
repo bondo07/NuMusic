@@ -17,6 +17,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import TopArtistsPage from "./pages/TopArtistsPage/TopArtistsPage";
 import { useEffect, useState } from "react";
+import useAuth from "./hooks/useAuth";
+
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
   const [artistResults, setArtistResults] = useState([])
   const [trackResults, setTrackResults] = useState([])
   const [artistInfo, setArtistInfo] = useState({})
+  const [user, token] = useAuth();
+
 
   const [authToken, setAuthToken] = useState("")
 
@@ -65,7 +69,9 @@ function App() {
               setTrackResults={setTrackResults}
               authToken={authToken}
               setAuthToken={setAuthToken}
-              authURL={authURL}/>
+              authURL={authURL}
+              token={token}
+              user={user}/>
             // </PrivateRoute>
           }
         />
@@ -73,7 +79,8 @@ function App() {
           path="/favorites"
           element={
             <PrivateRoute>
-              <FavoritesPage />
+              <FavoritesPage user={user}
+              token={token}/>
             </PrivateRoute>
           }
         />
