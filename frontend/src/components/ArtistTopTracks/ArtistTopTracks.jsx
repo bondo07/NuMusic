@@ -22,26 +22,34 @@ const ArtistTopTracks = ({artistInfo, authToken}) => {
         getTopTracks()
     }, [])
 
-
+    // while(topTracks.length >= 0) {
+    //     let i = topTracks.lenth + 1
+    // }
+    
+    // const trackNum = 0
+    // for(let i = 0; i < topTracks.length; i++) {
+    //     trackNum ++;
+    // }
+    // console.log(trackNum)
 
     return ( 
         <div>
             <h6 className="text-muted">{artistInfo.name} Top Songs</h6>
-            <TableContainer component={Paper} sx={{maxHeight: '425px'}}>
+            <TableContainer component={Paper} sx={{maxHeight: '425px', width: '600px'}}>
                 <Table aria-label="simple-table" stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell>{null}</TableCell>
                             <TableCell>Song Name</TableCell>
                             <TableCell align="center">Album</TableCell>
+                            <TableCell>{null}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {topTracks.map((track) => (
                             <TableRow key={track.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
-                                <TableCell>1</TableCell>
                                 <TableCell>{track.name}</TableCell>
                                 <TableCell align="center">{track.album.name}</TableCell>
+                                <TableCell><img src={track.album.images[2].url} alt="track album img"/></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

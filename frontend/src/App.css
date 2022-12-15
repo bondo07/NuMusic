@@ -56,3 +56,9 @@ button:hover {
   padding: 3px 7px;
   font-size: 17px;
 }
+
+.app {
+  min-height: 100vh;
+  background-color: #141e30;
+  background: linear-gradient(to right, #24243e, #141e30, #0f0c29);
+}

@@ -18,6 +18,7 @@ import FavoritesPage from "./pages/FavoritesPage/FavoritesPage";
 import TopArtistsPage from "./pages/TopArtistsPage/TopArtistsPage";
 import { useEffect, useState } from "react";
 
+
 function App() {
 
   const [artistResults, setArtistResults] = useState([])
@@ -51,7 +52,7 @@ function App() {
 
   // console.log(trackResults)
   return (
-    <div>
+    <div className="app">
       <Navbar />
       <Routes>
         <Route

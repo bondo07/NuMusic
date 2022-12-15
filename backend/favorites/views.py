@@ -10,9 +10,9 @@ from .Serializers import FavoriteSerializer
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_all_favorites(request, artist):
+def get_all_favorites(request, user):
     if request.method == 'GET':
-        favorite = Favorite.objects.filter(artist=artist)
+        favorite = Favorite.objects.filter(user=user)
         serializer = FavoriteSerializer(favorite, many=True)
         return Response(serializer.data)
 
