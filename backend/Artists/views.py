@@ -20,9 +20,16 @@ def get_all_artists(request):
 @permission_classes([IsAuthenticated])
 def add_user_artist(request):
     if request.method == 'POST':
-        serializer = ArtistSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+        if Artist.objects.filter(artist_name=request.data.get('artist_name')).exists():
+            print("maybe")
+            artist_object = get_object_or_404(Artist, artist_name = request.data.get('artist_name'))
+            print(artist_object)
+            serializer = ArtistSerializer(artist_object)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            serializer = ArtistSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['PUT', 'DELETE'])

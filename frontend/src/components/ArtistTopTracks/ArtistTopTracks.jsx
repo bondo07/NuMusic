@@ -14,7 +14,7 @@ const ArtistTopTracks = ({artistInfo, authToken}) => {
             Authorization: `Bearer ${authToken}`
           }
         })
-        console.log(response)
+        // console.log(response)
         setTopTracks(response.data.tracks)
     }
 

@@ -33,6 +33,15 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* .card-spacing {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+} */
+
+
 /* .artist-name:before,
 .artist-name:after {
   content: attr(data-text);

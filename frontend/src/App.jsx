@@ -90,7 +90,9 @@ function App() {
             <PrivateRoute>
               <SearchResultsPage artistInfo={artistInfo}
               setArtistInfo={setArtistInfo}
-              authToken={authToken}/>
+              authToken={authToken}
+              setArtistResults={setArtistResults}
+              artistResults={artistResults}/>
             </PrivateRoute>
           }
         />
