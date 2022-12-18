@@ -9,6 +9,7 @@ import {
   TableCell,
   Paper,
 } from "@mui/material";
+import './FavoritesPage.css'
 
 const FavoritesPage = ({ user, token, authToken }) => {
   const [userFavorites, setUserFavorites] = useState([]);
@@ -26,8 +27,7 @@ const FavoritesPage = ({ user, token, authToken }) => {
       );
       setUserFavorites(
         response.data.map(favorite => {
-            // console.log(favorite.artist.artist_api_id)
-            let artistID = favorite.artist.artist_api_id;
+            let artistID = favorite.artist.artist_api_id
             return {
                 artistId: artistID            
         }})
@@ -39,75 +39,44 @@ const FavoritesPage = ({ user, token, authToken }) => {
             Authorization: `Bearer ${authToken}`
         }
       }).then(response => {
+          // console.log(response)
           setFavArtist(response.data.artists)
         })
       
-    //   {
-    //     userFavorites.map((artist) => {
-    //       return (axios.get(
-    //         `https://api.spotify.com/v1/artists/?ids=${artist.artistId}`,
-    //         {
-    //           headers: {
-    //             Authorization: `Bearer ${authToken}`,
-    //           },
-    //         }
-    //       )
-    //         .then(artistResponse => {
-    //          setFavArtist(artistResponse.data)
-    //       }));
-    //     });
-    //   }
     } catch (error) {
       console.log(error.message);
     }
   }
 
-//   async function getFavArtist() {
-//         userFavorites.map(artist => {
-//             axios.get(`https://api.spotify.com/v1/artists/${artist.artistId}`, {
-//                 headers: {
-//                     Authorization: `Bearer ${authToken}`
-//                 }
-//             }
-//             )
-//                 .then(response => {
-//                     setFavArtist(response)
-//                     return (response)
-//                 })
-//         })
-//     } 
-
     useEffect(() => {
-        if(!getUserFavorites())
         getUserFavorites();
-        // getFavArtist();
     }, [user]);
-
+    console.log(user)
   return (
     <div>
-      <h6 className="text-muted">{} Top Songs</h6>
+      <div className="user-name">{user.first_name}'s Favorite Artists!</div>
                 <TableContainer component={Paper} sx={{maxHeight: '35rem', width: '100vw'}}>
                     <Table aria-label="simple-table" stickyHeader>
                         <TableHead>
                             <TableRow>
                                 <TableCell>{null}</TableCell>
-                                <TableCell>Artist</TableCell>
-                                <TableCell>Genre</TableCell>
+                                <TableCell align="center">Artist</TableCell>
+                                <TableCell align="center">Genre</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody >
                             {favArtist.map((artist) => (
                                 <TableRow key={artist.id} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
-                                    <TableCell><img src={artist.images[2].url} alt="track album img"/></TableCell>
-                                    <TableCell>{artist.name}</TableCell>
-                                    <TableCell align="center">{artist.genres[0]}</TableCell>
+                                    <TableCell ><img src={artist.images[2].url} alt="track album img"/></TableCell>
+                                    <TableCell align="center" sx={{fontSize: '20px'}}>{artist.name}</TableCell>
+                                    <TableCell align="center" sx={{fontSize: '20px'}}>{artist.genres[0]}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
     </div>
-  );
+  )
 };
 
 export default FavoritesPage;

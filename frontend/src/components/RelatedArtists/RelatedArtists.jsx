@@ -17,7 +17,6 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
         navigate("../searchresults", { replace: true });
         setArtistInfo(result)
     }
-    console.log(artistInfo)
     return ( 
         <div>
             <Card sx={{width: 220, height: 300}} onClick={handleSelect}>

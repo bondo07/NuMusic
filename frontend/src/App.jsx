@@ -101,7 +101,8 @@ function App() {
           path="/top10artists"
           element={
             <PrivateRoute>
-              <TopArtistsPage />
+              <TopArtistsPage user={user}
+              token={token} />
             </PrivateRoute>
           }
         />

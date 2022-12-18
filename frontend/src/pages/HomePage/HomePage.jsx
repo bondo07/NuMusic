@@ -33,7 +33,6 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
         type: "artist,track"
       }
     })
-    console.log(response)
     setArtistResults(response.data.artists.items.filter(el => el.images.length>0).map(artists => {
         return {
           id: artists.id,
