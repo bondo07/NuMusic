@@ -5,7 +5,7 @@ points
 Total: /275 points
 52.5 Total User Story Points
 
-(7.5 points) As a Music Enthusiast, I want to be able to search for an artist and see a
+<!-- (7.5 points) As a Music Enthusiast, I want to be able to search for an artist and see a
 list of results. (Using Spotify API)
 
 (7.5 points) As a Music Enthusiast, I want to be able to select an artist and see the 
@@ -13,7 +13,7 @@ corresponding info of that artist such as; albums, genre, artist info, songs, et
 (Using Spotify API)
 
 (5 points) As a Music Enthusiast, I want to be able to see related/suggested artists 
-on each artists info page
+on each artists info page -->
 
 (10 points) As a Music Enthusiast, I want to be able to "vote" or "like" an artist and 
 see a list of artists based on those "votes" or "likes" of all time

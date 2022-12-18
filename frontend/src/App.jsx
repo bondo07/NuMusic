@@ -80,7 +80,8 @@ function App() {
           element={
             <PrivateRoute>
               <FavoritesPage user={user}
-              token={token}/>
+              token={token}
+              authToken={authToken}/>
             </PrivateRoute>
           }
         />

@@ -14,23 +14,13 @@ const ArtistTopTracks = ({artistInfo, authToken}) => {
             Authorization: `Bearer ${authToken}`
           }
         })
-        // console.log(response)
         setTopTracks(response.data.tracks)
     }
 
     useEffect(() => {
         getTopTracks()
-    }, [])
+    }, [artistInfo])
 
-    // while(topTracks.length >= 0) {
-    //     let i = topTracks.lenth + 1
-    // }
-    
-    // const trackNum = 0
-    // for(let i = 0; i < topTracks.length; i++) {
-    //     trackNum ++;
-    // }
-    // console.log(trackNum)
 
     return ( 
         <div>

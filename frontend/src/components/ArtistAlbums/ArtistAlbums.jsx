@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { ImageList, ImageListItem, ImageListItemBar, ListSubheader, IconButton, InfoIcon } from "@mui/material"
+import { ImageList, ImageListItem, ImageListItemBar, ListSubheader, IconButton } from "@mui/material"
 
 
 const ArtistAlbums = ({artistInfo, authToken}) => {
@@ -13,23 +13,12 @@ const ArtistAlbums = ({artistInfo, authToken}) => {
             Authorization: `Bearer ${authToken}`
           }
         })
-        // console.log(response)
-        setAlbums(response.data.items) //.map((album) => {
-        //     return {
-        //         id: album.id,
-        //         name: album.name,
-        //         albumImage: album.images[0].url,
-        //         artist: album.artists[0].name
-        //     }
-        // }
-        // ))
+        setAlbums(response.data.items) 
     }
-    // console.log(albums[0].name)
     useEffect(() => {
         getAlbums()
-    }, [])
+    }, [artistInfo])
 
-    // console.log(artistInfo.name)
 
     return ( 
         <div>

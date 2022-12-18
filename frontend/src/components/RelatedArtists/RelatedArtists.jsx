@@ -17,13 +17,13 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
         navigate("../searchresults", { replace: true });
         setArtistInfo(result)
     }
-
+    console.log(artistInfo)
     return ( 
         <div>
             <Card sx={{width: 220, height: 300}} onClick={handleSelect}>
                 <CardMedia component="img"
                     style={{ width: "220px", height: "125px", objectFit: "cover"}}
-                    image={result.artistImage}
+                    image={result.artistImg}
                     alt={result.name}/>
                 <CardContent>
                     <Stack direction="row" spacing={25}>

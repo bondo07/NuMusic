@@ -12,14 +12,14 @@ list of results. (Using Spotify API) -->
 corresponding info of that artist such as; albums, genre, artist info, songs, etc. 
 (Using Spotify API) -->
 
-(5 points) As a Music Enthusiast, I want to be able to see related/suggested artists 
-on each artists info page
+<!-- (5 points) As a Music Enthusiast, I want to be able to see related/suggested artists 
+on each artists info page -->
 
-(10 points) As a Music Enthusiast, I want to be able to "vote" or "like" an artist and 
+(5/10 points) As a Music Enthusiast, I want to be able to "vote" or "like" an artist and 
 see a list of artists based on those "votes" or "likes" of all time
 
-(5 points) As a Music Enthusiast, I want to be able to be able to add artists or 
-albums to my "favorites" list, and be able to view them.
+<!-- (5 points) As a Music Enthusiast, I want to be able to be able to add artists or 
+albums to my "favorites" list, and be able to view them. -->
 
 (7.5 points) As a music Enthusiast, I want to see a list of all the highest rated artist 
 this week.

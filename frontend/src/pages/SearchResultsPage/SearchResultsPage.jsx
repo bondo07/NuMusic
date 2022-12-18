@@ -21,7 +21,7 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
             return {
                 id: artist.id,
                 name: artist.name,
-                artistImage: artist.images[0].url,
+                artistImg: artist.images[0].url,
                 genre: artist.genres[0]
             }
         }
@@ -31,6 +31,7 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
         getRelatedArtists();
         }, [artistInfo]);
     
+    // console.log(artistInfo)
 
     return ( 
         <div>
