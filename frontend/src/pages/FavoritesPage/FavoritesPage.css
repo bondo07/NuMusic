@@ -11,3 +11,9 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.fav-position {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

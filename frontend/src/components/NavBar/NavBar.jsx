@@ -12,7 +12,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="navBar">
+    <nav className="navBar">
       <ul>
         <Stack className="nav-buttons" direction="row" spacing={55}>
             <Button variant='Contained' onClick={() => navigate("/")}>Home</Button>
@@ -27,7 +27,7 @@ const Navbar = () => {
           </li>
         </Stack>
       </ul>
-    </div>
+    </nav>
   );
 };
 

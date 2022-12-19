@@ -45,7 +45,8 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
                     token={token}
                     result={result}/>
                     <UpVoteButton token={token}
-                    result={result}/>
+                    result={result}
+                    user={user}/>
                 </Box>
         </div>
      );

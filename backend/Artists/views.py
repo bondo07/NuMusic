@@ -21,9 +21,7 @@ def get_all_artists(request):
 def add_user_artist(request):
     if request.method == 'POST':
         if Artist.objects.filter(artist_name=request.data.get('artist_name')).exists():
-            print("maybe")
             artist_object = get_object_or_404(Artist, artist_name = request.data.get('artist_name'))
-            print(artist_object)
             serializer = ArtistSerializer(artist_object)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:

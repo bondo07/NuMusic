@@ -51,7 +51,8 @@ const ResultsTable = ({ result, setArtistInfo, token, user }) => {
         token={token}
         result={result}/>
         <UpVoteButton token={token}
-        result={result}/>
+        result={result}
+        user={user}/>
       </Box>
     </div>
   );

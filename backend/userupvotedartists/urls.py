@@ -1,5 +1,5 @@
 from django.urls import path, include
-from favorites import views
+from userupvotedartists import views
 
 urlpatterns= [
     path('', views.add_upvotedartist),

@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/cars/', include('cars.urls')),
     path('api/artists/', include('Artists.urls')),
     path('api/favorites/', include('favorites.urls')),
+    path('api/upvotedartists/', include('userupvotedartists.urls')),
 ]

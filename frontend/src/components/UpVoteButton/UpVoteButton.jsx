@@ -5,14 +5,14 @@ import { useState } from "react";
 
 
 
-const UpVoteButton = ({token, result}) => {
+const UpVoteButton = ({token, result, user}) => {
 
     async function upVoteArtist() {
         try {
-          const newArtist = {
+          let newArtist = {
             artist_api_id: result.id,
             artist_name: result.name,
-            upvotes: 1
+            upvotes: 0
           };
           let response = await axios.post(
             `http://127.0.0.1:8000/api/artists/add/`,
@@ -23,16 +23,15 @@ const UpVoteButton = ({token, result}) => {
               },
             }
             );
-            let addArtistUpvote = {
-              artist_api_id: result.id,
-              artist_name: result.name,
-              upvotes: response.data.upvotes + 1
+          let upvotedArtist = {
+            artist_id: response.data.id,
+            user_id: user.id
           }
-          await axios.put(`http://127.0.0.1:8000/api/artists/${response.data.id}/update/`, addArtistUpvote, {
+          await axios.post(`http://127.0.0.1:8000/api/upvotedartists/`, upvotedArtist, {
             headers: {
               Authorization: `Bearer ${token}`
-            }
-          })
+            },
+          });
         } catch (error) {
           console.log(error.message);
         }
