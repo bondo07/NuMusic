@@ -1,11 +1,11 @@
-import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Avatar, Stack } from '@mui/material';
+import { Avatar, Stack, Paper, Container } from '@mui/material';
 import ArtistAlbums from '../../components/ArtistAlbums/ArtistAlbums';
 import ArtistTopTracks from '../../components/ArtistTopTracks/ArtistTopTracks';
-import './SearchResultsPage.css'
 import RelatedArtists from '../../components/RelatedArtists/RelatedArtists';
+import './SearchResultsPage.css'
+
 
 
 const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResults, artistResults}) => {
@@ -45,20 +45,22 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
                 <ArtistAlbums artistInfo={artistInfo}
                 authToken={authToken}/>
             </Stack>
-            <span className="card-spacing">
-                {
-                    relatedArtists.map((result, i) => {
-                        return (
-                            <RelatedArtists artistInfo={artistInfo}
-                            setArtistInfo={setArtistInfo}
-                            setArtistResults={setArtistResults}
-                            artistResults={artistResults}
-                            key={i}
-                            result={result}/>
-                        )
-                    })
-                }
-            </span>
+            <div data-text={artistInfo.name} className="artist-genre">{artistInfo.name} Related Artists</div>
+                <span className="card-spacing">
+                    {
+                        relatedArtists.map((result, i) => {
+                            return (
+                                <RelatedArtists artistInfo={artistInfo}
+                                setArtistInfo={setArtistInfo}
+                                setArtistResults={setArtistResults}
+                                artistResults={artistResults}
+                                key={i}
+                                result={result}
+                                />
+                            )
+                        })
+                    }
+                </span>
         </div>
      );
 }

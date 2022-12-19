@@ -10,6 +10,7 @@ import { Button, Stack } from "@mui/material";
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import ThumbUpAltTwoToneIcon from '@mui/icons-material/ThumbUpAltTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import axios from "axios";
 
@@ -54,10 +55,13 @@ const ResultsTable = ({ result, setArtistInfo, token, user }) => {
     }
 
   }
+
+  // async function upvoteArtist()
   const handleAddFavorite = (e) => {
     e.preventDefault();
     addFavorite();
   };
+  console.log(result.id)
   return (
     <div className="artist-card">
       <Card sx={{ width: 350, height: 350 }} onClick={handleSelection}>
@@ -78,10 +82,15 @@ const ResultsTable = ({ result, setArtistInfo, token, user }) => {
           </Stack>
         </CardContent>
       </Card>
-        <Box sx={{ '& > :not(style)': { m: 1 } }}>
+        <Box sx={{ '& > :not(style)': { m: 1 } }} style={{display: "flex", justifyContent: "space-between"}}>
           <Tooltip title="Add to Favorites" placement="right-start">
             <Fab size="small" style={{backgroundColor: "#8e8cdd", color: "white"}} aria-label="add" onClick={handleAddFavorite}>
               <AddIcon />
+            </Fab>
+          </Tooltip>
+          <Tooltip title="Upvote This Artist!" placement="right-start">
+            <Fab size="small" style={{backgroundColor: "rgb(195 189 15)", color: "rgb(79 79 147"}}>
+              <ThumbUpAltTwoToneIcon />
             </Fab>
           </Tooltip>
         </Box>

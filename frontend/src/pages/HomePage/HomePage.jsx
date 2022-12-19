@@ -63,10 +63,10 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
       {! localStorage.getItem("spotifyKey") ?
           <a href={authURL} className="btn btn-success btn-lg">Login to Spotify</a> :
         <Stack>
-          <span>
+          <span className="btn btn-success btn-lg" style={{maxWidth: "10rem"}}>
             <Button variant="Contained" onClick={handleLogout}>Logout</Button>
           </span>
-          <SearchBar setSearchWord={setSearchWord}/>
+            <SearchBar setSearchWord={setSearchWord}/>
           <span className="card-spacing">
             {artistResults.map((result, i) => {
               return (
