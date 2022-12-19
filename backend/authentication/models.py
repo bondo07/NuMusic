@@ -14,6 +14,6 @@ class User(AbstractUser):
     # Example (note import of models above that is commented out)
     # this will add a column to the user table
     # is_student = models.BooleanField('student status', default=False)
-    city = models.CharField(max_length=255, default=None, null=True)
-    state = models.CharField(max_length=255, default=None, null=True)
-    zip_code = models.IntegerField(default=None)
+    # city = models.CharField(max_length=255, default=None, null=True)
+    # state = models.CharField(max_length=255, default=None, null=True)
+    # zip_code = models.IntegerField(default=None)

@@ -15,11 +15,11 @@ corresponding info of that artist such as; albums, genre, artist info, songs, et
 <!-- (5 points) As a Music Enthusiast, I want to be able to see related/suggested artists 
 on each artists info page -->
 
-(5/10 points) As a Music Enthusiast, I want to be able to "vote" or "like" an artist and 
-see a list of artists based on those "votes" or "likes" of all time
-
 <!-- (5 points) As a Music Enthusiast, I want to be able to be able to add artists or 
 albums to my "favorites" list, and be able to view them. -->
+
+(5/10 points) As a Music Enthusiast, I want to be able to "vote" or "like" an artist and 
+see a list of artists based on those "votes" or "likes" of all time
 
 (7.5 points) As a music Enthusiast, I want to see a list of all the highest rated artist 
 this week.
@@ -30,4 +30,4 @@ Google Charts)
 
 As a developer, I want to have an aesthetically pleasing and intuitive user 
 interface/user experience (UI/UX) with all features of the application stylized. (CSS, 
-Bootstrap, Material UI, etc.) 
+Bootstrap, Material UI, etc.)

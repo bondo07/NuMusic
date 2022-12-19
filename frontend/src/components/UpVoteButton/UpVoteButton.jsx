@@ -1,21 +1,19 @@
 import axios from "axios";
 import { Box, Tooltip, Fab, Slide, Snackbar} from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
+import ThumbUpAltTwoToneIcon from '@mui/icons-material/ThumbUpAltTwoTone';
 import { useState } from "react";
 
 
 
+const UpVoteButton = ({token, result}) => {
 
-const AddToFavoritesButton = ({user, token, result}) => {
-
-    async function addFavorite() {
+    async function upVoteArtist() {
         try {
           const newArtist = {
             artist_api_id: result.id,
             artist_name: result.name,
-            upvotes: 0
+            upvotes: 1
           };
-          let newFavorite 
           let response = await axios.post(
             `http://127.0.0.1:8000/api/artists/add/`,
             newArtist,
@@ -25,24 +23,25 @@ const AddToFavoritesButton = ({user, token, result}) => {
               },
             }
             );
-            newFavorite = {
-                artist_id: response.data.id,
-                user_id: user.id
-            }
-          await axios.post(`http://127.0.0.1:8000/api/favorites/`, newFavorite, {
+            let addArtistUpvote = {
+              artist_api_id: result.id,
+              artist_name: result.name,
+              upvotes: response.data.upvotes + 1
+          }
+          await axios.put(`http://127.0.0.1:8000/api/artists/${response.data.id}/update/`, addArtistUpvote, {
             headers: {
-                Authorization: "Bearer " + token,
-            },
-          });
+              Authorization: `Bearer ${token}`
+            }
+          })
         } catch (error) {
           console.log(error.message);
         }
-    
       }
-    const handleAddFavorite = (e) => {
-    e.preventDefault();
-    addFavorite();
-    };
+    
+    const handleUpVote = (e) => {
+        e.preventDefault();
+        upVoteArtist();
+      };
     
     const [open, setOpen] = useState(false)
 
@@ -50,7 +49,7 @@ const AddToFavoritesButton = ({user, token, result}) => {
         return <Slide {...props} direction="up" />;
     }
     const [transition, setTransition] = useState(undefined);
-  
+
     const handleClick = (Transition) => () => {
         setTransition(() => Transition);
         setOpen(true);
@@ -58,14 +57,13 @@ const AddToFavoritesButton = ({user, token, result}) => {
     
     const handleClose = () => {
         setOpen(false);
-    }
-  
+    }  
     
     return ( 
         <div onClick={handleClick(TransitionUp)}>
-            <Tooltip title="Add to Favorites" placement="right-start">
-                <Fab size="small" style={{backgroundColor: "#8e8cdd", color: "white"}} aria-label="add" onClick={handleAddFavorite}>
-                    <AddIcon />
+            <Tooltip title="Upvote This Artist!" placement="right-start">
+                <Fab size="small" style={{backgroundColor: "rgb(195 189 15)", color: "rgb(79 79 147"}} onClick={handleUpVote}>
+                    <ThumbUpAltTwoToneIcon />
                 </Fab>
             </Tooltip>
             <Snackbar
@@ -73,11 +71,11 @@ const AddToFavoritesButton = ({user, token, result}) => {
             onClose={handleClose}
             autoHideDuration={3000}
             TransitionComponent={transition}
-            message="Added To Favorites!"
+            message="Upvoted Artist!"
             key={transition ? transition.name : ''}
         />
         </div>
      );
 }
  
-export default AddToFavoritesButton;
+export default UpVoteButton;

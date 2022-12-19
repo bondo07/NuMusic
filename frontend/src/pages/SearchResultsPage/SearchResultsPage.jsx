@@ -8,7 +8,7 @@ import './SearchResultsPage.css'
 
 
 
-const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResults, artistResults}) => {
+const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResults, artistResults, user, token}) => {
     const [relatedArtists, setRelatedArtists] = useState([])
 
     async function getRelatedArtists() {
@@ -31,7 +31,6 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
         getRelatedArtists();
         }, [artistInfo]);
     
-    // console.log(artistInfo)
 
     return ( 
         <div>
@@ -56,6 +55,8 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
                                 artistResults={artistResults}
                                 key={i}
                                 result={result}
+                                user={user}
+                                token={token}
                                 />
                             )
                         })

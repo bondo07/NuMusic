@@ -93,7 +93,9 @@ function App() {
               setArtistInfo={setArtistInfo}
               authToken={authToken}
               setArtistResults={setArtistResults}
-              artistResults={artistResults}/>
+              artistResults={artistResults}
+              user={user}
+              token={token}/>
             </PrivateRoute>
           }
         />

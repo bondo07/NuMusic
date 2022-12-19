@@ -9,10 +9,12 @@ import { Button, Stack, Box, Fab, Tooltip } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpAltTwoToneIcon from '@mui/icons-material/ThumbUpAltTwoTone';
 import './RelatedArtists.css'
+import UpVoteButton from "../UpVoteButton/UpVoteButton";
+import AddToFavoritesButton from "../AddToFavoritesButton/AddToFavoritesButton";
 
 
 
-const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults, artistResults, result}) => {
+const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults, artistResults, result, user, token}) => {
 
     let navigate = useNavigate();
     function handleSelect(e) {
@@ -39,16 +41,11 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
                 </CardContent>
             </Card>
                 <Box sx={{ '& > :not(style)': { m: 1 } }} style={{display: "flex", justifyContent: "space-between"}}>
-                    <Tooltip title="Add to Favorites" placement="right-start">
-                        <Fab size="small" style={{backgroundColor: "#8e8cdd", color: "white"}} aria-label="add">
-                            <AddIcon />
-                        </Fab>
-                    </Tooltip>
-                    <Tooltip title="Upvote This Artist!" placement="right-start">
-                        <Fab size="small" style={{backgroundColor: "rgb(195 189 15)", color: "rgb(79 79 147"}}>
-                            <ThumbUpAltTwoToneIcon />
-                        </Fab>
-                    </Tooltip>
+                    <AddToFavoritesButton user={user}
+                    token={token}
+                    result={result}/>
+                    <UpVoteButton token={token}
+                    result={result}/>
                 </Box>
         </div>
      );

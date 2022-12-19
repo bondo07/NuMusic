@@ -39,10 +39,8 @@ const FavoritesPage = ({ user, token, authToken }) => {
             Authorization: `Bearer ${authToken}`
         }
       }).then(response => {
-          // console.log(response)
           setFavArtist(response.data.artists)
         })
-      
     } catch (error) {
       console.log(error.message);
     }
@@ -51,11 +49,10 @@ const FavoritesPage = ({ user, token, authToken }) => {
     useEffect(() => {
         getUserFavorites();
     }, [user]);
-    console.log(user)
   return (
     <div>
       <div className="user-name">{user.first_name}'s Favorite Artists!</div>
-                <TableContainer component={Paper} sx={{maxHeight: '35rem', width: '100vw'}}>
+                <TableContainer component={Paper} sx={{maxHeight: '35rem', width: '50vw'}}>
                     <Table aria-label="simple-table" stickyHeader>
                         <TableHead>
                             <TableRow>
