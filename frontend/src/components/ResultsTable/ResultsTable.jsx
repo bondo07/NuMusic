@@ -1,23 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ResultsTable.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, Stack, Slide, Snackbar } from "@mui/material";
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import ThumbUpAltTwoToneIcon from '@mui/icons-material/ThumbUpAltTwoTone';
-import Tooltip from '@mui/material/Tooltip';
-import axios from "axios";
+import { Stack, Box } from "@mui/material";
 import AddToFavoritesButton from "../AddToFavoritesButton/AddToFavoritesButton";
 import UpVoteButton from "../UpVoteButton/UpVoteButton";
 
 const ResultsTable = ({ result, setArtistInfo, token, user }) => {
-
   let navigate = useNavigate();
 
   function handleSelection(e) {
@@ -46,13 +38,12 @@ const ResultsTable = ({ result, setArtistInfo, token, user }) => {
           </Stack>
         </CardContent>
       </Card>
-      <Box sx={{ '& > :not(style)': { m: 1 } }} style={{display: "flex", justifyContent: "space-between"}}>
-        <AddToFavoritesButton user={user}
-        token={token}
-        result={result}/>
-        <UpVoteButton token={token}
-        result={result}
-        user={user}/>
+      <Box
+        sx={{ "& > :not(style)": { m: 1 } }}
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <AddToFavoritesButton user={user} token={token} result={result} />
+        <UpVoteButton token={token} result={result} user={user} />
       </Box>
     </div>
   );
