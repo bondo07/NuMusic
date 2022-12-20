@@ -14,6 +14,7 @@ const SearchBar = ({setSearchWord}) => {
     }
 
     return (  
+      <div>
         <form className="search-bar" onSubmit={handleSubmit}>
         <input
           className="text-bar"
@@ -21,11 +22,10 @@ const SearchBar = ({setSearchWord}) => {
           placeholder="Search Artists/Songs..."
           value={searchCriteria}
           onChange={handleChange}
-        />
-        <button className="search-button">Search</button>
-      </form>
-  
-
+          />
+          <button className="button-64">Search</button>
+        </form>
+      </div>
     );
 }
  

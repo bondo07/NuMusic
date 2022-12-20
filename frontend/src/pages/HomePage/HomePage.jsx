@@ -54,19 +54,16 @@ const HomePage = ({artistResults, setArtistResults, setArtistInfo, setTrackResul
     fetchSearchResults();
   }, [searchWord]);
   
-  // console.log(artistResults)
   return (
     <div>
-        <b>
-          <img src={nuLogo} alt="nuMusic" className="logo"/>
-        </b>
+        <img src={nuLogo} alt="nuMusic" className="logo"/>
       {! localStorage.getItem("spotifyKey") ?
           <a href={authURL} className="btn btn-success btn-lg">Login to Spotify</a> :
-        <Stack>
-          <span className="btn btn-success btn-lg" style={{maxWidth: "10rem"}}>
+          <Stack>
+          <span className="btn btn-success btn-lg" style={{maxWidth: "10rem", marginLeft: "15rem"}}>
             <Button variant="Contained" onClick={handleLogout}>Logout</Button>
           </span>
-            <SearchBar setSearchWord={setSearchWord}/>
+          <SearchBar setSearchWord={setSearchWord}/>
           <span className="card-spacing">
             {artistResults.map((result, i) => {
               return (

@@ -10,6 +10,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-left: 45px;
 }
 
 .top-artist-name {
@@ -24,6 +25,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-left: 45px;
 }
 
 .top-artist-genre {
@@ -38,4 +40,5 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-left: 45px;
 }

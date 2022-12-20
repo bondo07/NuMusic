@@ -23,7 +23,7 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
         setArtistInfo(result)
     }
     return ( 
-        <div>
+        <div className="artist-card">
             <Card sx={{width: 350, height: 350, marginTop: "12px"}} onClick={handleSelect}>
                 <CardMedia component="img"
                     style={{ width: "350px", height: "250px", objectFit: "cover"}}
@@ -34,7 +34,7 @@ const RelatedArtists = ({artistInfo, authToken, setArtistInfo, setArtistResults,
                         <Typography  variant="h6" component="div">
                             {result.name}
                         </Typography>
-                        <Typography variant="body2" component="text.secondary">
+                        <Typography variant="body2" component="text-secondary">
                             {result.genre}
                         </Typography>
                     </Stack>
