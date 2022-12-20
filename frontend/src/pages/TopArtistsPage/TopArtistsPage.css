@@ -1,0 +1,41 @@
+.top-artists {
+    text-transform: Uppercase;
+    margin-bottom: 0.5em;
+    font-family: "Rubik", sans-serif;
+    font-size: 4rem;
+    color: #e4e5e6;
+    margin: 5px;
+    position: relative;
+    background: linear-gradient(to right, #8e8ed2, #314b79, #2f21a5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top-artist-name {
+    text-transform: Uppercase;
+    margin-bottom: 0.5em;
+    font-family: "Rubik", sans-serif;
+    font-size: 3rem;
+    color: #e4e5e6;
+    margin: 5px;
+    position: relative;
+    background: linear-gradient(to right, #8e8ed2, #314b79, #2f21a5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top-artist-genre {
+    text-transform: Uppercase;
+    margin-bottom: 0.5em;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.5rem;
+    color: #e4e5e6;
+    margin: 5px;
+    position: relative;
+    background: linear-gradient(to right, #8e8ed2, #314b79, #2f21a5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

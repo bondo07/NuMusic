@@ -21,10 +21,17 @@ def get_all_upvoted_artists(request, user):
 @permission_classes([IsAuthenticated])
 def add_upvotedartist(request):
     if request.method == 'POST':
-        up_voted_artist = Artist.objects.get(pk = request.data.get('artist_id'))
-        up_voted_artist.upvotes += 1
-        up_voted_artist.save()
-        serializer = UpvotedArtistSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if UpvotedArtists.objects.filter(artist_id = request.data.get('artist_id')).exists():
+            up_voted_artist = Artist.objects.get(pk = request.data.get('artist_id'))
+            up_voted_artist.upvotes += 1
+            up_voted_artist.save()
+            serializer = UpvotedArtistSerializer(up_voted_artist)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            up_voted_artist = Artist.objects.get(pk = request.data.get('artist_id'))
+            up_voted_artist.upvotes += 1
+            up_voted_artist.save()
+            serializer = UpvotedArtistSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -9,7 +9,7 @@ li {
 }
 
 .navBar {
-  background: steelblue;
+  background: linear-gradient(to right, #8e8ed2, #314b79, #2f21a5);
   box-shadow: 4px 2px 5px gray;
   color: white;
   margin-bottom: 2rem;
@@ -25,7 +25,7 @@ li {
 
 .navBar button:hover {
   background: white;
-  color: rgb(70, 180, 114);
+  color: rgb(77, 64, 177);
   cursor: pointer;
 }
 

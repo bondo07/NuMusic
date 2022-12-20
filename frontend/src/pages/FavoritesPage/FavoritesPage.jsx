@@ -11,7 +11,6 @@ import {
   Tabs,
   Tab,
   Box,
-  Typography,
 } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
@@ -84,13 +83,13 @@ const FavoritesPage = ({ user, token, authToken }) => {
             artistUpvotes: upvotedArtist.artist.upvotes
           };
         })
-      let testUpvotes = response.data.map((upvotedArtist) => {
-        let artistUpvotes = upvotedArtist.artist.upvotes;
-        return {
-          artistUpvotes: artistUpvotes,
-        };
-      })
-        setTest(testUpvotes)
+      // let testUpvotes = response.data.map((upvotedArtist) => {
+      //   let artistUpvotes = upvotedArtist.artist.upvotes;
+      //   return {
+      //     artistUpvotes: artistUpvotes,
+      //   };
+      // })
+      //   setTest(testUpvotes)
       await axios
         .get(
           `https://api.spotify.com/v1/artists?ids=${userUpvoted.map(
@@ -127,8 +126,8 @@ const FavoritesPage = ({ user, token, authToken }) => {
     <div>
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
         <Tabs centered aria-lable="Favorites Tabs" textColor={"primary" } value={value} onChange={handleChange}>
-          <Tab wrapped label="My Favorite Artists" style={{backgroundColor: '#8d8ec7'}} icon={<FavoriteIcon/>} iconPosition="start"/>
-          <Tab wrapped label="My Upvoted Artists" style={{backgroundColor: '#8d8ec7'}} icon={<StarIcon/>} iconPosition="start"/>
+          <Tab wrapped label="My Favorite Artists" style={{color: 'white'}} icon={<FavoriteIcon/>} iconPosition="start"/>
+          <Tab wrapped label="My Upvoted Artists" style={{color: 'white'}} icon={<StarIcon/>} iconPosition="start"/>
         </Tabs>
       </Box>
       <Panel value={value} index={0}>
@@ -186,7 +185,7 @@ const FavoritesPage = ({ user, token, authToken }) => {
                       <TableCell>{null}</TableCell>
                       <TableCell align="center">Artist</TableCell>
                       <TableCell align="center">Genre</TableCell>
-                      <TableCell align="center">Upvotes</TableCell>
+                      {/* <TableCell align="center">Upvotes</TableCell> */}
                     </TableRow>
                   </TableHead>
                   <TableBody>

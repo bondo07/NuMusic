@@ -27,6 +27,7 @@ const SearchResultsPage = ({artistInfo, setArtistInfo, authToken, setArtistResul
         }
         ))
     }
+    console.log(artistInfo)
     useEffect(() => {
         getRelatedArtists();
         }, [artistInfo]);
