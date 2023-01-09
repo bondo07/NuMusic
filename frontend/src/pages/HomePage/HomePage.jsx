@@ -53,6 +53,7 @@ const HomePage = ({
         })
     );
     setTrackResults(response.data.tracks.items);
+    console.log(artistResults);
   }
   useEffect(() => {
     if (!searchWord) return;
@@ -61,22 +62,36 @@ const HomePage = ({
 
   return (
     <div>
-      <img src={nuLogo} alt="nuMusic" className="logo" />
+      <Stack direction="row">
+        <img src={nuLogo} alt="nuMusic" className="logo" />
+        <SearchBar setSearchWord={setSearchWord} />
+      </Stack>
       {!localStorage.getItem("spotifyKey") ? (
-        <a href={authURL} className="btn btn-success btn-lg">
+        <a
+          href={authURL}
+          className="btn btn-success btn-lg"
+          style={{
+            maxWidth: "15rem",
+            marginLeft: "15rem",
+            marginBottom: "5rem",
+          }}
+        >
           Login to Spotify
         </a>
       ) : (
         <Stack>
           <span
             className="btn btn-success btn-lg"
-            style={{ maxWidth: "10rem", marginLeft: "15rem" }}
+            style={{
+              maxWidth: "10rem",
+              marginLeft: "15rem",
+              marginBottom: "5rem",
+            }}
           >
             <Button variant="Contained" onClick={handleLogout}>
               Logout
             </Button>
           </span>
-          <SearchBar setSearchWord={setSearchWord} />
           <span className="card-spacing">
             {artistResults.map((result, i) => {
               return (

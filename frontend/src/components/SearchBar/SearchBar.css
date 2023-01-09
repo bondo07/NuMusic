@@ -10,7 +10,8 @@
 
 .search-bar {
     margin: 35px;
-    margin-left: 28rem;
+    margin-left: 20rem;
+    margin-top: 110px;
     display: flex;
     justify-content: flex-end;
 }
